@@ -1,0 +1,16 @@
+wait
+actions
+עוד דברים שלמדנו בסלניום
+junit
+
+אם drivermenager יממש את webDriver וbaseelemenיכיל ממשק webdriver נוכל ליצור
+ב-drivermaneger
+public WebElement findElement(By by) {
+        log.debug("Driver activity log: Going to find a single element using locator-> " + by.toString());
+        return driver.findElement(by)
+
+
+
+        ובbaseElement להפעיל את הפונקציה הזו באחת הפעמים
+
+        במחשבה שניה הוא חייב לממש אותו אחרת יהיו לו מאוד קצת אפשרויות ואז מה עשינו פה?
