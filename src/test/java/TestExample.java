@@ -11,9 +11,8 @@ import selenium.pages.ElementBase;
 @ExtendWith({WatcherExtension.class, LogExtension.class})
 public class TestExample {
     @Test
-    public void test01() {
+    public void test01() {//דרך אנוטציות להעביר שמות דפדפנים וכו
         DriverManager driver = new DriverManager();
-        ElementBase elementBase = new ElementBase();
 
         driver.initializeDriver(WebDriverFactory.createLocalDriver(), "edge");
 
@@ -21,9 +20,10 @@ public class TestExample {
         WebElement webElement = driver.findElement(LocatorType.className, "gLFyf");
         webElement.sendKeys("Selenium");
 
+        driver.quitDriver();
         //TODO לקשר בין webElement ל elementBase;
         //האם לשמור כל אלמנט במחלקה או שזה מיותר?
-        driver.quitDriver();
+
     }
 
 }

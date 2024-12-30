@@ -33,7 +33,6 @@ public class LocalWebDriverService implements WebDriverService {
             case "chrome":
                 WebDriverManager.chromedriver().clearDriverCache().setup();
                 return new ChromeDriver();
-
             case "firefox":
                 WebDriverManager.firefoxdriver().clearDriverCache().setup();
                 return new FirefoxDriver();
