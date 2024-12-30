@@ -1,4 +1,4 @@
-package JUNIT.Extensions;
+package store;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,4 +28,9 @@ public class TestContext {
         return (String) contextData.get(key);
     }
 }
+//USE
+ // TestContext.getInstance().set("browser", System.getProperty("browser", "chrome"));
+//
+//        String browser = TestContext.getInstance().getString("browser");
+
 
