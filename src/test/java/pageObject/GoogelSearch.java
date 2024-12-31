@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import selenium.pages.ElementBase;
+import selenium.pages.WebElementManager;
 
 public class GoogelSearch extends BasePageObject{
     public GoogelSearch(WebDriver driver) {
@@ -13,9 +14,9 @@ public class GoogelSearch extends BasePageObject{
     @FindBy(className = "gLFyf")
     private WebElement textField;
 
-    public void searchForText(String text) {
-        ElementBase element = new ElementBase(textField);
-        element.sendText(text);
-        element.enter();
-    }
+//    public void searchForText(String text) {
+//        textField.sendKeys(text);
+//        textField.enter();
+//    }
+    //צריך לקשר בינו  WebElementManager ולבין WebElement
 }
