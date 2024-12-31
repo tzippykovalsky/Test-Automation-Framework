@@ -10,32 +10,46 @@ import java.io.IOException;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class LogExtension implements BeforeAllCallback, AfterAllCallback {
 
     private static BufferedWriter logWriter;
     private static final String LOG_DIRECTORY = "src/test/resources/logs";
     private static final String LOG_FILE = LOG_DIRECTORY + "/test-log.txt";
+    private static final Lock logLock = new ReentrantLock(); // מנעול לכתיבה בטוחה
 
     @Override
     public void beforeAll(ExtensionContext context) throws Exception {
-        // ודא שהתיקיה קיימת ואם לא, צור אותה
-        File logDir = new File(LOG_DIRECTORY);
-        if (!logDir.exists()) {
-            logDir.mkdirs();  // יצירת תיקיה אם היא לא קיימת
-        }
+        logLock.lock(); // נעילה לכתיבה בטוחה
+        try {
+            File logDir = new File(LOG_DIRECTORY);
+            if (!logDir.exists()) {
+                logDir.mkdirs();
+            }
 
-        // יצירת קובץ לוג או פתיחה של קובץ קיים
-        logWriter = new BufferedWriter(new FileWriter(LOG_FILE, true));
-        logWriter.write(getCurrentTimestamp() + " התחלת הבדיקות- \n" + context.getDisplayName() + "\n");
-        logWriter.flush();
+            if (logWriter == null) { // ודא ש-BufferedWriter נפתח פעם אחת
+                logWriter = new BufferedWriter(new FileWriter(LOG_FILE, true));
+            }
+
+            logWriter.write(getCurrentTimestamp() + " start: " + context.getDisplayName() + "\n");
+            logWriter.flush();
+        } finally {
+            logLock.unlock(); // שחרור המנעול
+        }
     }
 
     @Override
     public void afterAll(ExtensionContext context) throws Exception {
-        if (logWriter != null) {
-            logWriter.write(getCurrentTimestamp() + " סיום הבדיקות- \n");
-            logWriter.close();
+        logLock.lock(); // נעילה לכתיבה בטוחה
+        try {
+            if (logWriter != null) {
+                logWriter.write(getCurrentTimestamp()+ " finish: " + context.getDisplayName() + "\n");
+                logWriter.flush(); // שמור את התוכן
+            }
+        } finally {
+            logLock.unlock(); // שחרור המנעול
         }
     }
 
