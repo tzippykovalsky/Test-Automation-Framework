@@ -10,7 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import selenium.driver.DriverManager;
 import selenium.driver.WebDriverFactory;
 
-@ExtendWith({WatcherExtension.class, LogExtension.class})
+@ExtendWith({WatcherExtension.class})
 public abstract class BaseTest {
     protected DriverManager driver;
     protected String browserName="chrome";
