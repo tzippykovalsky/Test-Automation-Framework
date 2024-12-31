@@ -1,10 +1,8 @@
 package selenium.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import selenium.enums.LocatorType;
-import selenium.pages.Element;
+import enums.LocatorType;
 
 /**
  * ElementBase is a base class for all elements in the application.

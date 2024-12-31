@@ -2,7 +2,7 @@ package JUNIT.base;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
-import selenium.enums.LocatorType;
+import enums.LocatorType;
 
 public class FirefoxTest extends BaseTest  {
     @Override

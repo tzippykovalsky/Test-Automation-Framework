@@ -1,4 +1,4 @@
-package selenium.enums;
+package enums;
 
 /**
  * LocatorType enum represents different types of locators used in WebDriver.
