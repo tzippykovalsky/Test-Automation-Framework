@@ -8,7 +8,7 @@ public class ChromeTest extends BaseTest {
 
     @Override
     void setBrowserName() {
-        this.browserName = "chrome";
+        this.browserName = "firefox";
     }
 
     @Test

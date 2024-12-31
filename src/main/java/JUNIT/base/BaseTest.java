@@ -13,7 +13,7 @@ import selenium.driver.WebDriverFactory;
 @ExtendWith({WatcherExtension.class, LogExtension.class})
 public abstract class BaseTest {
     protected DriverManager driver;
-    protected String browserName;
+    protected String browserName="chrome";
 
     abstract void setBrowserName();
 
