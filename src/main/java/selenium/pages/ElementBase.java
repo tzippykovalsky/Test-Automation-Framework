@@ -1,6 +1,7 @@
 package selenium.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import enums.LocatorType;
 
@@ -16,15 +17,22 @@ public class ElementBase implements Element {
     private  WebElement webElement;
     private By by;
 
-//    public ElementBase(WebElement webElement, By by) {
-//        this.webElement = webElement;
-//        this.by = by;
-//    }
+    public ElementBase(WebElement webElement) {
+        this.webElement = webElement;
+    }
+
+    public ElementBase(WebElement webElement, By by) {
+        this.webElement = webElement;
+        this.by = by;
+    }
 
     public By getBy() {
         return by;
     }
 
+    public WebElement getWebElement() {
+        return webElement;
+    }
 
     public String getText() {
         return webElement.getText();
@@ -74,6 +82,9 @@ public class ElementBase implements Element {
             default:
                 throw new IllegalArgumentException("Unsupported locator type: " + locatorType);
         }
+    }
+    public void enter(){
+        webElement.sendKeys(Keys.RETURN);
     }
 
 }

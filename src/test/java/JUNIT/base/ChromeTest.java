@@ -3,7 +3,11 @@ package JUNIT.base;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 import enums.LocatorType;
+import pageObject.GoogelSearch;
 import pageObject.Login;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ChromeTest extends BaseTest {
 
@@ -17,6 +21,13 @@ public class ChromeTest extends BaseTest {
         driver.get("https://www.google.com");
         WebElement webElement = driver.findElement(LocatorType.className, "gLFyf");
         webElement.sendKeys("Selenium");
+    }
+    @Test
+    public void googleSearchPageObject() {
+        GoogelSearch googelSearch = new GoogelSearch(driver.getWebDriver());
+        driver.get("https://www.google.com");
+        googelSearch.searchForText("Selenium");
+        assertTrue(driver.getWebDriver().getCurrentUrl().contains("https://www.google.com/search?q=Selenium"));
     }
 
     @Test
