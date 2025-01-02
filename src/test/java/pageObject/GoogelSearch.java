@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class GoogelSearch extends BasePageWithActions {
+public class GoogelSearch extends WebBasePage {
     //להוסיף url?
     public GoogelSearch(WebDriver driver) {
         super(driver);

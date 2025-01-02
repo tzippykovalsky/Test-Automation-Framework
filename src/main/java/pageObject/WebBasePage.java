@@ -6,12 +6,12 @@ import lombok.Delegate;
 import org.openqa.selenium.WebDriver;
 
 
-public abstract class BasePageWithActions extends BasePage {
+public abstract class WebBasePage extends BasePage {
 
     @Delegate
     private final ElementActions elementActions;
 
-    public BasePageWithActions(WebDriver driver) {
+    public WebBasePage(WebDriver driver) {
         super(driver);
         this.elementActions = new AbstractElementActions(driver) {};
     }
