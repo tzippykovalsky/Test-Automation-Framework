@@ -6,12 +6,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import enums.LocatorType;
 
+import java.util.List;
+
 
 /**
  * DriverManager is responsible for managing the WebDriver instance lifecycle.
  * It provides methods to initialize, quit and ensure proper shutdown of the WebDriver.
  */
-public class DriverManager {
+public class DriverActions {
 
     private WebDriver driver;
 
@@ -29,14 +31,7 @@ public class DriverManager {
         this.driver.manage().window().maximize();
     }
 
-    /**
-     * Quits the WebDriver instance, closing the browser.
-     */
-    public void quitDriver() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+
 
     /**
      * Gets the current WebDriver instance.
@@ -47,20 +42,52 @@ public class DriverManager {
         return driver;
     }
 
+
     /**
-     * Navigates to the specified URL in the WebDriver.
-     *
-     * @param url
+     * Navigate to a URL in the browser.
+     * @param url the URL to navigate to
      */
-    public void get(String url) {
+    public void navigateTo(String url) {
         driver.get(url);
     }
 
-    public WebElement findElement(By by) {
-        return driver.findElement(by);
+    /**
+     * Switch to a specific window by title.
+     * @param windowTitle the title of the window to switch to
+     */
+    public void switchToWindowByTitle(String windowTitle) {
+        driver.getWindowHandles().stream()
+                .filter(handle -> driver.switchTo().window(handle).getTitle().equals(windowTitle))
+                .findFirst()
+                .ifPresent(handle -> driver.switchTo().window(handle));
+    }
+
+    /**
+     * Switch to an iframe using its name or ID.
+     * @param iframeNameOrId the name or ID of the iframe
+     */
+    public void switchToIframe(String iframeNameOrId) {
+        driver.switchTo().frame(iframeNameOrId);
+    }
+
+    /**
+     * Close the current window or tab.
+     */
+    public void closeWindow() {
+        driver.close();
+    }
+
+    /**
+     * Quit the WebDriver and close all associated windows.
+     */
+    public void quitDriver() {
+        driver.quit();
     }
 
     public WebElement findElement(LocatorType locatorType, String attributeValue) {
         return driver.findElement(ElementLocator.createLocator(locatorType, attributeValue));
+    }
+    public List<WebElement> findElements(LocatorType locatorType, String attributeValue) {
+        return driver.findElements(ElementLocator.createLocator(locatorType, attributeValue));
     }
 }

@@ -2,17 +2,15 @@ package JUNIT.base;
 
 import JUNIT.Extensions.LogExtension;
 import JUNIT.Extensions.WatcherExtension;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
-import store.TestContext;
+import selenium.driver.DriverActions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import selenium.driver.DriverManager;
 import selenium.driver.WebDriverFactory;
 
 @ExtendWith({WatcherExtension.class, LogExtension.class})
 public abstract class BaseTest {
-    protected DriverManager driver;
+    protected DriverActions driver;
     protected String browserName="chrome";
 
     abstract void setBrowserName();
@@ -21,7 +19,7 @@ public abstract class BaseTest {
     @BeforeEach
     public void setupTest() {
         setBrowserName();
-        driver = new DriverManager();
+        driver = new DriverActions();
         driver.initializeDriver(WebDriverFactory.createLocalDriver(),browserName);
     }
 

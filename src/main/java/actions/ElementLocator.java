@@ -4,16 +4,18 @@ import org.openqa.selenium.By;
 import enums.LocatorType;
 
 /**
- * ElementBase is a base class for all elements in the application.
- * It provides common methods for interacting with web elements.
- * It includes methods for getting the element's text, checking its enabled status,
- * and checking its visibility.
- *
+ * ElementLocator provides utility methods for creating locators.
+ * Includes methods for simple and dynamic locators (like complex XPath or dynamic elements).
  */
-public class ElementLocator{
-    //add more actions
-    public static By createLocator(LocatorType locatorType, String attributeValue) {
+public class ElementLocator {
 
+    /**
+     * Creates a locator based on the specified locator type and attribute value.
+     * @param locatorType the type of locator (e.g., id, name, xpath, etc.)
+     * @param attributeValue the value of the attribute
+     * @return a By object representing the locator
+     */
+    public static By createLocator(LocatorType locatorType, String attributeValue) {
         switch (locatorType) {
             case id:
                 return By.id(attributeValue);
@@ -32,5 +34,29 @@ public class ElementLocator{
         }
     }
 
+    /**
+     * Creates a dynamic XPath based on a template and the dynamic parameter to replace in the XPath.
+     * @param xpathTemplate the XPath template
+     * @param dynamicValue the value to replace in the XPath
+     * @return a By object representing the dynamic XPath locator
+     */
+    public static By createDynamicXPath(String xpathTemplate, String dynamicValue) {
+        String dynamicXPath = xpathTemplate.replace("{dynamicValue}", dynamicValue);
+        return By.xpath(dynamicXPath);
+    }
 
+    /**
+     * Validates whether a given XPath is syntactically valid.
+     * @param xpath the XPath to validate
+     * @return true if the XPath is valid, false otherwise
+     */
+    public static boolean isValidXPath(String xpath) {
+        try {
+            // Try creating a By object to see if the XPath is valid
+            By.xpath(xpath);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
