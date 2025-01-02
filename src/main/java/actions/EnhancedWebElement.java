@@ -1,4 +1,4 @@
-package selenium.pages;
+package actions;
 
 import org.openqa.selenium.*;
 import java.util.List;
@@ -7,11 +7,11 @@ import java.util.List;
  * ElementBase is a custom implementation of the WebElement interface.
  * It wraps a WebElement instance and provides extended functionalities.
  */
-public class WebElementManager implements WebElement {
+public class EnhancedWebElement implements WebElement {
 
     private final WebElement webElement;
 
-    public WebElementManager(WebElement webElement) {
+    public EnhancedWebElement(WebElement webElement) {
         this.webElement = webElement;
     }
 

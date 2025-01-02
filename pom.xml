@@ -49,6 +49,13 @@
             <version>5.9.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version> <!-- וודאי שאת משתמשת בגרסה העדכנית -->
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
 

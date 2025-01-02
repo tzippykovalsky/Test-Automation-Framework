@@ -10,7 +10,4 @@ public WebElement findElement(By by) {
         return driver.findElement(by)
 
 
-
-        ובbaseElement להפעיל את הפונקציה הזו באחת הפעמים
-
-        במחשבה שניה הוא חייב לממש אותו אחרת יהיו לו מאוד קצת אפשרויות ואז מה עשינו פה?
+//להוסיף עוד פונקציות סטטיות במחלקה של elementbas

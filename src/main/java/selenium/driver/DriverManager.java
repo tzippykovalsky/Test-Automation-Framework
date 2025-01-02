@@ -1,10 +1,11 @@
 package selenium.driver;
 
+import actions.ElementLocator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import enums.LocatorType;
-import selenium.pages.ElementBase;
+
 
 /**
  * DriverManager is responsible for managing the WebDriver instance lifecycle.
@@ -60,6 +61,6 @@ public class DriverManager {
     }
 
     public WebElement findElement(LocatorType locatorType, String attributeValue) {
-        return driver.findElement(ElementBase.createLocator(locatorType, attributeValue));
+        return driver.findElement(ElementLocator.createLocator(locatorType, attributeValue));
     }
 }
