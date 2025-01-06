@@ -1,6 +1,7 @@
 package selenium.driver;
 
 import actions.ElementLocator;
+import enums.BrowserType;
 import org.openqa.selenium.*;
 import enums.LocatorType;
 
@@ -23,7 +24,7 @@ public class DriverActions {
      * @param driverService the WebDriverService used to create the driver
      * @param browserName   the browser name to initialize the driver with
      */
-    public void initializeDriver(WebDriverService driverService, String browserName) {
+    public void initializeDriver(WebDriverService driverService, BrowserType browserName) {
         if (driverService instanceof LocalWebDriverService) {
             this.driver = driverService.createLocalDriver(browserName);
         } else if (driverService instanceof RemoteWebDriverService) {

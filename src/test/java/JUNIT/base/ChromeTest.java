@@ -1,5 +1,6 @@
 package JUNIT.base;
 
+import enums.BrowserType;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 import enums.LocatorType;
@@ -13,7 +14,7 @@ public class ChromeTest extends BaseTest {
 
     @Override
     void setBrowserName() {
-        this.browserName = "chrome";
+        this.browserName = BrowserType.CHROME;
     }
 
     @Test
@@ -22,6 +23,7 @@ public class ChromeTest extends BaseTest {
         WebElement webElement = driver.findElement(LocatorType.className, "gLFyf");
         webElement.sendKeys("Selenium");
     }
+
     @Test
     public void googleSearchPageObject() {
         GoogelSearch googelSearch = new GoogelSearch(driver.getWebDriver());
@@ -38,5 +40,14 @@ public class ChromeTest extends BaseTest {
 
     }
 
+    @Test
+    public void failToCheckStarsInGithub() {
+        driver.navigateTo("https://github.com/tzippykovalsky");
+        WebElement element = driver.findElement(LocatorType.id, "768313732");
+        elementAction.click(element);
+        element = driver.findElement(LocatorType.sccSelector, "a:contains('stars') > span.text-bold.color-fg-default");
+        assertEquals(3, element.getText());
+
+    }
 
 }

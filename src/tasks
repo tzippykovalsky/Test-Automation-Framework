@@ -15,3 +15,14 @@ driver  יממש את webDriver?
 //Add javaDocs to all classes
 
 //screenshots לטפל
+
+/**
+EnhancedWebElement
+ להחליט מה לעשות עם המחלקה הזו היא ממממשת את
+webElement
+לא כ"כ רואה בה צורך כי רוצה שתהיה עבודה זהה
+/*
+
+/**
+enum browsers לראות אם להשתמש בו
+/*

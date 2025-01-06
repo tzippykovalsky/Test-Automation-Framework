@@ -7,10 +7,19 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.WebDriver;
 
+/**
+ * AbstractElementActions provides basic actions that can be performed on web elements.
+ * It serves as a base class for concrete implementations of element actions.
+ */
 public abstract class AbstractElementActions implements ElementActions{
 
     protected WebDriver driver;
 
+    /**
+     * Constructs an instance of AbstractElementActions with the specified WebDriver.
+     *
+     * @param driver The WebDriver to be used for performing actions.
+     */
     public AbstractElementActions(WebDriver driver) {
         this.driver = driver;
     }
@@ -183,5 +192,14 @@ public abstract class AbstractElementActions implements ElementActions{
      */
     public void clickWithShift(WebElement element) {
         new Actions(driver).keyDown(Keys.SHIFT).click(element).keyUp(Keys.SHIFT).perform();
+    }
+
+    /**
+     * Performs a standard click action on the specified element.
+     *
+     * @param element The WebElement to click.
+     */
+    public void click(WebElement element) {
+        element.click();
     }
 }

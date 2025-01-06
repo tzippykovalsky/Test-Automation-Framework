@@ -1,5 +1,6 @@
 package selenium.driver;
 
+import enums.BrowserType;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 
@@ -17,7 +18,7 @@ public interface WebDriverService {
      *
      * @return a new instance of WebDriver
      */
-    WebDriver createLocalDriver(String driverName);
+    WebDriver createLocalDriver(BrowserType browserName);
 
     /**
      * Create a WebDriver instance using a remote server.

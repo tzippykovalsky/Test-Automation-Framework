@@ -1,5 +1,6 @@
 package selenium.driver;
 
+import enums.BrowserType;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -28,21 +29,22 @@ public class LocalWebDriverService implements WebDriverService {
      * @return driver instance
      */
     @Override
-    public WebDriver createLocalDriver(String browserName) {
-        switch (browserName.toLowerCase()) {
-            case "chrome":
+    public WebDriver createLocalDriver(BrowserType browserName) {
+        return switch (browserName) {
+            case BrowserType.CHROME -> {
                 WebDriverManager.chromedriver().clearDriverCache().setup();
-                return new ChromeDriver();
-            case "firefox":
+                yield new ChromeDriver();
+            }
+            case BrowserType.FIREFOX -> {
                 WebDriverManager.firefoxdriver().clearDriverCache().setup();
-                return new FirefoxDriver();
-            case "edge":
+                yield new FirefoxDriver();
+            }
+            case BrowserType.EDGE -> {
                 WebDriverManager.edgedriver().clearDriverCache().setup();
-                return new EdgeDriver();
-            default:
-                break;
-        }
-        throw new IllegalArgumentException("Unsupported driver name: " + browserName);
+                yield new EdgeDriver();
+            }
+            default -> throw new IllegalArgumentException("Unsupported driver name: " + browserName);
+        };
     }
 
     @Override
