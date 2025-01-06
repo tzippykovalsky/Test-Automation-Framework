@@ -1,10 +1,12 @@
 package JUNIT.base;
 
+import JUNIT.Extensions.RetryExtension;
 import enums.BrowserType;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebElement;
 import enums.LocatorType;
-import pageObject.GoogelSearch;
+import pageObject.GoogleSearch;
 import pageObject.Login;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,9 +28,9 @@ public class ChromeTest extends BaseTest {
 
     @Test
     public void googleSearchPageObject() {
-        GoogelSearch googelSearch = new GoogelSearch(driver.getWebDriver());
+        GoogleSearch googleSearch = new GoogleSearch(driver.getWebDriver());
         driver.navigateTo("https://www.google.com");
-        googelSearch.searchForText("Selenium");
+        googleSearch.searchForText("Selenium");
         assertTrue(driver.getWebDriver().getCurrentUrl().contains("https://www.google.com/search?q=Selenium"));
     }
 
@@ -49,5 +51,6 @@ public class ChromeTest extends BaseTest {
         assertEquals(3, element.getText());
 
     }
+
 
 }

@@ -1,6 +1,7 @@
 package JUNIT.base;
 
 import JUNIT.Extensions.LogExtension;
+import JUNIT.Extensions.RetryExtension;
 import JUNIT.Extensions.ScreenshotExtension;
 import JUNIT.Extensions.WatcherExtension;
 import actions.ConcreteElementActions;
@@ -17,7 +18,8 @@ import selenium.utils.TestContext;
  * It initializes the WebDriver and associated actions before each test and ensures cleanup after the test.
  * The class uses JUnit 5 extensions for logging, screenshots, and failure watching.
  */
-@ExtendWith({WatcherExtension.class, LogExtension.class, ScreenshotExtension.class})
+//, LogExtension.class לא נותן למה?????
+@ExtendWith({WatcherExtension.class,LogExtension.class, ScreenshotExtension.class, RetryExtension.class})
 public abstract class BaseTest {
 
     /**

@@ -1,6 +1,7 @@
 package pageObject;
 
 import actions.AbstractElementActions;
+import actions.ConcreteElementActions;
 import actions.ElementActions;
 import lombok.Delegate;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +19,7 @@ public abstract class WebBasePage extends BasePage {
     @Delegate
     private final ElementActions elementActions;
 
+    protected ConcreteElementActions elementAction;
     /**
      * Constructor for initializing the web page object.
      * It initializes the {@link ElementActions} instance using {@link AbstractElementActions}.
@@ -27,5 +29,6 @@ public abstract class WebBasePage extends BasePage {
     public WebBasePage(WebDriver driver) {
         super(driver);
         this.elementActions = new AbstractElementActions(driver) {};
+        elementAction = new ConcreteElementActions(driver);//כפחלות מסוימת אך אולי עדיך כך כדי שיהיה זהה כמו בלי פייגאובגקט
     }
 }

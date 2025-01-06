@@ -4,9 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class GoogelSearch extends WebBasePage {
+public class GoogleSearch extends WebBasePage {
     //להוסיף url?
-    public GoogelSearch(WebDriver driver) {
+    public GoogleSearch(WebDriver driver) {
         super(driver);
     }
 
@@ -14,8 +14,9 @@ public class GoogelSearch extends WebBasePage {
     private WebElement textField;
 
     public void searchForText(String text) {
-        typeText(textField, text);
-        enter(textField);
+        elementAction.typeText(textField, text);
+        elementAction.click(textField);
+
     }
 
 }
