@@ -8,6 +8,7 @@
     <artifactId>test-infrastructure-project</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
+    <description>Test infrastructure project for automation with Selenium and JUnit</description>
 
 
     <properties>
@@ -73,18 +74,18 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven.surefire.plugin.version}</version>
                 </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.3.1</version>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>jar</goal>
-                            </goals>
-                        </execution>
-                    </executions>
+                    <version>3.2.0</version>
+                    <configuration>
+                        <failOnError>false</failOnError>
+                        <author>false</author>
+                        <version>false</version>
+                    </configuration>
                 </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
