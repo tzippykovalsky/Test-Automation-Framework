@@ -7,7 +7,7 @@
     <groupId>org.example</groupId>
     <artifactId>test-infrastructure-project</artifactId>
     <version>1.0.0</version>
-
+    <packaging>jar</packaging>
 
 
     <properties>
@@ -58,7 +58,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.30</version> <!-- וודאי שאת משתמשת בגרסה העדכנית -->
+            <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
 
@@ -75,22 +75,34 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>3.5.0</version>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.3.1</version>
                     <executions>
                         <execution>
-                            <phase>validate</phase> <!-- Checkstyle will run in the validate phase -->
                             <goals>
-                                <goal>check</goal>
+                                <goal>jar</goal>
                             </goals>
                         </execution>
                     </executions>
-                    <configuration>
-                        <configLocation>checkstyle.xml</configLocation>
-                        <consoleOutput>true</consoleOutput>
-                        <failsOnError>true</failsOnError>
-                    </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.2.1</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
+                    <version>2.15.0</version>
+                </plugin>
+
             </plugins>
         </pluginManagement>
     </build>
