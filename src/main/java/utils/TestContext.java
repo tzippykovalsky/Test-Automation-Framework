@@ -1,4 +1,4 @@
-package selenium.utils;
+package utils;
 
 import org.openqa.selenium.WebDriver;
 
@@ -11,7 +11,6 @@ public class TestContext {
     // Setter for WebDriver
     public static void setDriver(WebDriver driver) {
         driverStore=driver;
-        System.out.println(driverStore+" driverStore");
     }
 
     // Getter for WebDriver

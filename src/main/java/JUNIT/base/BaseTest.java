@@ -11,7 +11,7 @@ import selenium.driver.DriverActions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import selenium.driver.WebDriverFactory;
-import selenium.utils.TestContext;
+import utils.TestContext;
 
 /**
  * BaseTest is an abstract class providing the common setup and cleanup logic for all test classes.

@@ -2,8 +2,8 @@ package JUNIT.Extensions;
 
 import org.junit.jupiter.api.extension.*;
 import org.openqa.selenium.WebDriver;
-import selenium.utils.ScreenCapture;
-import selenium.utils.TestContext;
+import utils.ScreenCapture;
+import utils.TestContext;
 
 import java.io.IOException;
 
